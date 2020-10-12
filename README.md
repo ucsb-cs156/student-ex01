@@ -1,2 +1,7 @@
-# student-ex01
-Code for Student tutorial, ex01
+# student-tutorial
+
+Code for Student tutorial
+
+See: <https://ucsb-cs156.github.io/tutorials/student/>
+
+
