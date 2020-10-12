@@ -3,7 +3,7 @@ public class Student {
     int perm;
 
     public Student() {
-        name = "Sample Student Fail";
+        name = "Sample Student";
         perm = 9999999;
     }
 
