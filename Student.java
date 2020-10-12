@@ -19,4 +19,9 @@ public class Student {
     public int perm() {
         return this.perm;
     }
+
+    @Override
+    public String toString() {
+        return "[name: " + this.name + ", perm: " + this.perm + "]";
+    }
 }
