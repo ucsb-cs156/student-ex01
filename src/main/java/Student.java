@@ -12,11 +12,11 @@ public class Student {
         this.perm = perm;
     }
 
-    public String name() {
+    public String getName() {
         return this.name;
     }
 
-    public int perm() {
+    public int getPerm() {
         return this.perm;
     }
 
