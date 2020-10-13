@@ -1,3 +1,4 @@
+package edu.ucsb.cs156.student;
 public class Main { // implicit: public class Main extends object
 
     public static void main(String[] args) {

@@ -1,3 +1,4 @@
+package edu.ucsb.cs156.student;
 public class Student {
     String name;
     int perm;
