@@ -1,10 +1,10 @@
 public class Student {
-    private String name;
+    private String name;   // java.lang.String or just String
     private int perm;
 
     public Student() {
-        name = "Sample Student";
-        perm = 9999999;
+        this.name = "Sample Student";
+        this.perm = 9999999;
     }
 
     public Student(String name, int perm) {
@@ -12,11 +12,11 @@ public class Student {
         this.perm = perm;
     }
 
-    public String name() {
+    public String getName() {
         return this.name;
     }
 
-    public int perm() {
+    public int getPerm() {
         return this.perm;
     }
 }
