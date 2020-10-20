@@ -9,6 +9,11 @@ public class Student {
     }
 
     public Student(String name, int perm) {
+
+        if (perm < 1 || perm > 9999999) {
+            throw new IllegalArgumentException("Unacceptable value for perm: " + perm);
+        }
+
         this.name = name;
         this.perm = perm;
     }
@@ -25,4 +30,5 @@ public class Student {
     public String toString() {
         return "[name: " + this.name + ", perm: " + this.perm + "]";
     }
+
 }

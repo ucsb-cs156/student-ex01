@@ -30,4 +30,31 @@ public class StudentTest {
         assertEquals(expected, s.toString());
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void test_constructor_zeroPerm() {
+        Student s = new Student("Test",0);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void test_constructor_negPerm() {
+        Student s = new Student("Test",-1);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void test_constructor_tooBigPerm() {
+        Student s = new Student("Test",10000000);
+    }
+
+    @Test
+    public void test_constructor_perm_1_ok() {
+        Student s = new Student("Test",1);
+        assertEquals(1,s.getPerm());
+    }
+
+    @Test
+    public void test_constructor_perm_9999999_ok() {
+        Student s = new Student("Test",9999999);
+        assertEquals(9999999,s.getPerm());
+    }
+
 }
