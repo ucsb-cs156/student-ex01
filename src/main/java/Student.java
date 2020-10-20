@@ -1,6 +1,6 @@
 public class Student {
-    String name;
-    int perm;
+    private String name;
+    private int perm;
 
     public Student() {
         name = "Sample Student";
