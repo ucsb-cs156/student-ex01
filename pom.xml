@@ -33,6 +33,11 @@
                         </goals>
                     </execution>
                 </executions>
+                <configuration>
+                    <excludes>
+                      <exclude>edu/ucsb/cs156/student/Main.class</exclude>
+                    </excludes>
+                </configuration>
             </plugin>
 
             <plugin>
@@ -43,6 +48,9 @@
                     <targetClasses>
                         <param>edu.*</param>
                     </targetClasses>
+                    <excludedClasses>
+                        <param>edu.ucsb.cs156.student.Main</param>
+                    </excludedClasses>
                     <targetTests>
                         <param>edu.*</param>
                     </targetTests>
