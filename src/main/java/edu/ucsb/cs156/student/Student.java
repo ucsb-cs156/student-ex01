@@ -5,12 +5,12 @@ public class Student {
 
     public Student() {
         name = "Sample Student";
-        perm = 9999999;
+        perm = 999999;
     }
 
     public Student(String name, int perm) {
 
-        if (perm < 1 || perm > 9999999) {
+        if (!validPerm(perm)) {
             throw new IllegalArgumentException("Unacceptable value for perm: " + perm);
         }
 
@@ -29,6 +29,17 @@ public class Student {
     @Override
     public String toString() {
         return "[name: " + this.name + ", perm: " + this.perm + "]";
+    }
+
+    public static boolean validPerm(int perm) {
+        if (perm < 1 || perm > 9999999) {
+            return false;
+        }
+        if (perm <= 999999)
+           return true;
+        int lastDigit = perm % 10;
+        int firstSix = perm / 10;
+        return lastDigit == Luhn.checkDigit(firstSix);
     }
 
 }

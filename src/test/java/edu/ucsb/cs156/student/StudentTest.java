@@ -1,6 +1,9 @@
 package edu.ucsb.cs156.student;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertFalse;
+
 import org.junit.Test;
 
 public class StudentTest {
@@ -13,20 +16,20 @@ public class StudentTest {
 
     @Test
     public void test_getName2() {
-        Student s = new Student("Chris Gaucho", 1234567);
+        Student s = new Student("Chris Gaucho", 1234566);
         assertEquals("Chris Gaucho", s.getName());
     }
 
     @Test
     public void test_getPerm1() {
         Student s = new Student();
-        assertEquals(9999999, s.getPerm());
+        assertEquals(999999, s.getPerm());
     }
 
     @Test
     public void test_toString1() {
         Student s = new Student();
-        String expected = "[name: Sample Student, perm: 9999999]";
+        String expected = "[name: Sample Student, perm: 999999]";
         assertEquals(expected, s.toString());
     }
 
@@ -52,9 +55,24 @@ public class StudentTest {
     }
 
     @Test
-    public void test_constructor_perm_9999999_ok() {
-        Student s = new Student("Test",9999999);
-        assertEquals(9999999,s.getPerm());
+    public void test_constructor_perm_9999996_ok() {
+        Student s = new Student("Test",9999996);
+        assertEquals(9999996,s.getPerm());
+    }
+
+    @Test
+    public void test_validPerm_1111111() {
+        assertTrue(Student.validPerm(1111111));
+    }
+
+    @Test
+    public void test_validPerm_neg1_false() {
+        assertFalse(Student.validPerm(-1));
+    }
+
+    @Test
+    public void test_validPerm_0_false() {
+        assertFalse(Student.validPerm(0));
     }
 
 }
