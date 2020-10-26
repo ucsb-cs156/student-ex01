@@ -32,7 +32,7 @@ public class Student {
     }
 
     public static boolean validPerm(int perm) {
-        if (perm < 1 || perm > 9999999) {
+        if (perm < 1 || perm > 9999996) {
             return false;
         }
         if (perm <= 999999)

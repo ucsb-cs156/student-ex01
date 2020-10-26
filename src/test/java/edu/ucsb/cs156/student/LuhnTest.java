@@ -20,4 +20,9 @@ public class LuhnTest {
         assertEquals(4, Luhn.checkDigit(182734));
     }
 
+    @Test
+    public void test_luhn_defaultConstructor() {
+       Luhn l = new Luhn();
+    }
+
 }

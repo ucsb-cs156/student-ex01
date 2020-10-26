@@ -75,4 +75,24 @@ public class StudentTest {
         assertFalse(Student.validPerm(0));
     }
 
+    @Test
+    public void test_validPerm_1() {
+       assertTrue(Student.validPerm(1));
+    }
+
+    @Test
+    public void test_validPerm_9999996() {
+        assertTrue(Student.validPerm(9999996));
+    }
+
+    @Test
+    public void test_validPerm_999999() {
+      assertTrue(Student.validPerm(999999));
+    }
+
+    @Test
+    public void test_validPerm_1111119() {
+      assertFalse(Student.validPerm(1111119));
+    }
+
 }
