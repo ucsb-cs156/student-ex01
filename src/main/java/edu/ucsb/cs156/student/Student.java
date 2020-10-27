@@ -42,4 +42,40 @@ public class Student {
         return lastDigit == Luhn.checkDigit(firstSix);
     }
 
+    public static class InvalidCSVLineException extends Exception {
+        private static final long serialVersionUID = 1L;
+        public InvalidCSVLineException(String msg) {
+            super(msg);
+        }
+    }
+
+    public static class InvalidPermException extends Exception {
+        private static final long serialVersionUID = 1L;
+        public InvalidPermException(String msg) { 
+            super (msg);
+        }
+    }
+
+    public static Student fromCSV(String csv) throws InvalidCSVLineException, InvalidPermException {
+            String [] parts = csv.split(",");
+
+            if (parts.length != 2) {
+                throw new InvalidCSVLineException("Invalid: "+csv);
+            }
+
+            String name=parts[0];
+            int perm = 0;
+
+            try {
+                perm=Integer.parseInt(parts[1]);
+            } catch (NumberFormatException nfe) {
+                throw new InvalidPermException("Invalid: " + parts[1]);
+            }
+
+            if (!validPerm(perm)) {
+                throw new InvalidPermException("Invalid: " + perm);
+            }
+
+            return new Student(name, perm);
+    }
 }

@@ -36,6 +36,7 @@
                 <configuration>
                     <excludes>
                       <exclude>edu/ucsb/cs156/student/Main.class</exclude>
+                      <exclude>edu/ucsb/cs156/student/ReadStudents.class</exclude>
                     </excludes>
                 </configuration>
             </plugin>
@@ -50,6 +51,7 @@
                     </targetClasses>
                     <excludedClasses>
                         <param>edu.ucsb.cs156.student.Main</param>
+                        <param>edu.ucsb.cs156.student.ReadStudents</param>
                     </excludedClasses>
                     <targetTests>
                         <param>edu.*</param>
