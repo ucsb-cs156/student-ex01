@@ -128,4 +128,11 @@ public class StudentTest {
         s = Student.fromCSV(csv);
     }
 
+    @Test
+    public void test_compareTo_1() {
+        Student s1 = new Student("Test", 111111);
+        Student s2 = new Student("Test", 222222);
+        assertTrue(s1.compareTo(s2)<0);
+    }
+
 }

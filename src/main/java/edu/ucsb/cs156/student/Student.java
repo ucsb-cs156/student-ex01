@@ -1,7 +1,20 @@
 package edu.ucsb.cs156.student;
-public class Student {
+public class Student implements Comparable<Student> {
     private String name;
     private int perm;
+
+    public int compareTo(Student o) {
+        // compare this with o and return <0 ==0 >0
+        return this.perm - o.perm;
+    }
+
+    // Student s1;
+    // Student s2;
+
+    // s1.compareTo(s2)    s1 and s2 have the same perm
+    // s1.compareTo(s2)    negative if s1's perm is less than s2's perm
+    // s1.compareTo(s2)    positive if s1's perm is greater than s2's perm
+
 
     public Student() {
         name = "Sample Student";

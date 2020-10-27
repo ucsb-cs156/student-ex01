@@ -6,6 +6,7 @@ import java.nio.file.Paths;
 import java.util.List;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class ReadStudents {
     public static void main(String[] args) {
@@ -31,6 +32,8 @@ public class ReadStudents {
         }
 
         ArrayList<Student> students = linesToStudents(allLines);
+
+        Collections.sort(students);
 
         System.out.println(students);
 
