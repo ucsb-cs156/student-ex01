@@ -18,4 +18,6 @@ public class StudentNameComparator implements Comparator<Student> {
         return s1.getName().compareTo(s2.getName());
     }
 
+    // similar to the strcmp function from C/C++ programming
+
 }
