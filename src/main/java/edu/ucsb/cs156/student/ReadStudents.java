@@ -40,8 +40,8 @@ public class ReadStudents {
         System.out.println("Sorted by perm (natural ordering):");
         listStudents(students);
 
-        students.sort(new StudentNameComparator());
-        System.out.println("Sorted by name using StudentNameComparator");
+        students.sort(new StudentLastNameComparator());
+        System.out.println("Sorted by last name using StudentLastNameComparator");
         listStudents(students);
 
     } // main

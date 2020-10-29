@@ -11,11 +11,11 @@ import java.util.Comparator;
  * as first inner classes, then anonymous inner classes, then
  * finally as lambda expressions.
  */
-public class StudentNameComparator implements Comparator<Student> {
+public class StudentLastNameComparator implements Comparator<Student> {
 
     @Override
     public int compare(Student s1, Student s2) {
-        return s1.getName().compareTo(s2.getName());
+        return s1.getLast().compareTo(s2.getLast());
     }
 
 }
