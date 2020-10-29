@@ -33,11 +33,28 @@ public class ReadStudents {
 
         ArrayList<Student> students = linesToStudents(allLines);
 
-        Collections.sort(students);
+        System.out.println("Order from file:");
+        listStudents(students);
 
-        System.out.println(students);
+        Collections.sort(students);
+        System.out.println("Sorted by perm (natural ordering):");
+        listStudents(students);
+
+        students.sort(new StudentNameComparator());
+        System.out.println("Sorted by name using StudentNameComparator");
+        listStudents(students);
 
     } // main
+
+    /**
+     * Print students one per line
+     * @param students
+     */
+    public static void listStudents(List<Student> students) {
+        for (Student s: students) {
+            System.out.println(s);
+        }
+    }
 
     public static ArrayList<Student> linesToStudents(List<String> lines) {
 
