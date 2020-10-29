@@ -2,6 +2,7 @@ package edu.ucsb.cs156.student;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 import static org.junit.Assert.assertFalse;
 
 import org.junit.Test;
@@ -9,15 +10,27 @@ import org.junit.Test;
 public class StudentTest {
 
     @Test
-    public void test_getName1() {
+    public void test_getFirst1() {
         Student s = new Student();
-        assertEquals("Sample Student", s.getName());
+        assertEquals("Sample", s.getFirst());
     }
 
     @Test
-    public void test_getName2() {
-        Student s = new Student("Chris Gaucho", 1234566);
-        assertEquals("Chris Gaucho", s.getName());
+    public void test_getLast1() {
+        Student s = new Student();
+        assertEquals("Student", s.getLast());
+    }
+
+    @Test
+    public void test_getFirst2() {
+        Student s = new Student("Chris", "Gaucho", 1234566, 0);
+        assertEquals("Chris", s.getFirst());
+    }
+
+    @Test
+    public void test_getLast2() {
+        Student s = new Student("Chris", "Gaucho", 1234566, 0);
+        assertEquals("Gaucho", s.getLast());
     }
 
     @Test
@@ -27,36 +40,42 @@ public class StudentTest {
     }
 
     @Test
+    public void test_getUnits1() {
+        Student s = new Student();
+        assertEquals(0, s.getUnits());
+    }
+
+    @Test
     public void test_toString1() {
         Student s = new Student();
-        String expected = "[name: Sample Student, perm: 999999]";
+        String expected = "[first: Sample, last: Student, perm: 999999, units: 0]";
         assertEquals(expected, s.toString());
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void test_constructor_zeroPerm() {
-        Student s = new Student("Test", 0);
+        Student s = new Student("Test","Last", 0,0);
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void test_constructor_negPerm() {
-        Student s = new Student("Test", -1);
+        Student s = new Student("Test","Last", -1,0);
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void test_constructor_tooBigPerm() {
-        Student s = new Student("Test", 10000000);
+        Student s = new Student("Test","Last", 10000000,0);
     }
 
     @Test
     public void test_constructor_perm_1_ok() {
-        Student s = new Student("Test", 1);
+        Student s = new Student("Test","Last", 1,0);
         assertEquals(1, s.getPerm());
     }
 
     @Test
     public void test_constructor_perm_9999996_ok() {
-        Student s = new Student("Test", 9999996);
+        Student s = new Student("Test", "Last",9999996,0);
         assertEquals(9999996, s.getPerm());
     }
 
@@ -96,15 +115,14 @@ public class StudentTest {
     }
 
     @Test
-    public void test_fromCSV_1() {
-        String csv = "Chris Gaucho,1111111";
+    public void test_fromCSV_1() throws Exception {
+        String csv = "Chris,Gaucho,1111111,0";
         Student s = null;
-        try {
-            s = Student.fromCSV(csv);
-        } catch (Exception e) {
-        }
-        assertEquals(s.getName(), "Chris Gaucho");
+        s = Student.fromCSV(csv);
+        assertEquals(s.getFirst(), "Chris");
+        assertEquals(s.getLast(), "Gaucho");
         assertEquals(s.getPerm(), 1111111);
+        assertEquals(s.getUnits(), 0);
     }
 
     @Test(expected=Student.InvalidCSVLineException.class)
@@ -116,22 +134,22 @@ public class StudentTest {
 
     @Test(expected=Student.InvalidPermException.class)
     public void test_fromCSV_4() throws Student.InvalidCSVLineException, Student.InvalidPermException {
-        String csv = "Chris Gaucho,not-an-integer";
+        String csv = "Chris,Gaucho,not-an-integer,0";
         Student s = null;
         s = Student.fromCSV(csv);
     }
 
     @Test(expected=Student.InvalidPermException.class)
     public void test_fromCSV_5() throws Student.InvalidCSVLineException, Student.InvalidPermException {
-        String csv = "Chris Gaucho,1111119";
+        String csv = "Chris,Gaucho,1111119,0";
         Student s = null;
         s = Student.fromCSV(csv);
     }
 
     @Test
     public void test_compareTo_1() {
-        Student s1 = new Student("Test", 111111);
-        Student s2 = new Student("Test", 222222);
+        Student s1 = new Student("Test","Last",111111,0);
+        Student s2 = new Student("Test","Last",222222,0);
         assertTrue(s1.compareTo(s2)<0);
     }
 

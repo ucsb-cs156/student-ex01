@@ -1,47 +1,53 @@
 package edu.ucsb.cs156.student;
 public class Student implements Comparable<Student> {
-    private String name;
+    private String first;
+    private String last;
     private int perm;
+    private int units;
 
     public int compareTo(Student o) {
         // compare this with o and return <0 ==0 >0
         return this.perm - o.perm;
     }
 
-    // Student s1;
-    // Student s2;
-
-    // s1.compareTo(s2)    s1 and s2 have the same perm
-    // s1.compareTo(s2)    negative if s1's perm is less than s2's perm
-    // s1.compareTo(s2)    positive if s1's perm is greater than s2's perm
-
-
     public Student() {
-        name = "Sample Student";
+        first = "Sample";
+        last = "Student";
         perm = 999999;
+        units = 0;
     }
 
-    public Student(String name, int perm) {
+    public Student(String first, String last, int perm, int units) {
 
         if (!validPerm(perm)) {
             throw new IllegalArgumentException("Unacceptable value for perm: " + perm);
         }
 
-        this.name = name;
+        this.first = first;
+        this.last = last;
         this.perm = perm;
+        this.units = units;
     }
 
-    public String getName() {
-        return this.name;
+    public String getFirst() {
+        return this.first;
+    }
+
+    public String getLast() {
+        return this.last;
     }
 
     public int getPerm() {
         return this.perm;
     }
 
+    public int getUnits() {
+        return this.units;
+    }
+
     @Override
     public String toString() {
-        return "[name: " + this.name + ", perm: " + this.perm + "]";
+        return "[first: " + this.first +  ", last: " + this.last + ", perm: " + this.perm + ", units: " + this.units+ "]";
     }
 
     public static boolean validPerm(int perm) {
@@ -72,23 +78,31 @@ public class Student implements Comparable<Student> {
     public static Student fromCSV(String csv) throws InvalidCSVLineException, InvalidPermException {
             String [] parts = csv.split(",");
 
-            if (parts.length != 2) {
+            if (parts.length != 4) {
                 throw new InvalidCSVLineException("Invalid: "+csv);
             }
 
-            String name=parts[0];
+            String first=parts[0];
+            String last=parts[1];
             int perm = 0;
 
             try {
-                perm=Integer.parseInt(parts[1]);
+                perm=Integer.parseInt(parts[2]);
             } catch (NumberFormatException nfe) {
-                throw new InvalidPermException("Invalid: " + parts[1]);
+                throw new InvalidPermException("Invalid: " + parts[2]);
             }
 
             if (!validPerm(perm)) {
                 throw new InvalidPermException("Invalid: " + perm);
             }
 
-            return new Student(name, perm);
+            int units = 0;
+            try {
+                units=Integer.parseInt(parts[3]);
+            } catch (NumberFormatException nfe) {
+                throw new InvalidCSVLineException("Invalid Units: " + parts[3]);
+            }
+
+            return new Student(first, last, perm, units);
     }
 }
