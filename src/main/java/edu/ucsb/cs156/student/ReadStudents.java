@@ -8,6 +8,8 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Collections;
 
+import java.util.Comparator;
+
 public class ReadStudents {
     public static void main(String[] args) {
 
@@ -43,6 +45,39 @@ public class ReadStudents {
         students.sort(new StudentLastNameComparator());
         System.out.println("Sorted by last name using StudentLastNameComparator");
         listStudents(students);
+
+        students.sort(new Student.FirstNameComparator());
+        System.out.println("Sorted by first name using Student.FirstNameComparator");
+        listStudents(students);
+
+        // Comparator as instance of anonymous inner class
+        // that implements an interface
+
+        Comparator<Student> unitsComparator = new Comparator<Student>(){
+            public int compare(Student s1, Student s2) {
+                return Integer.compare(s1.getUnits(),s2.getUnits());
+            }
+        };
+
+        students.sort(unitsComparator);
+        System.out.println("Sorted by units using unitsComparator");
+        listStudents(students);
+        
+        // Comparator as Lambda Expression
+        // which is just a short hand for instance of anonymous
+        // inner class.  
+        
+        // Can only be used with interfaces that
+        // are declared with @FunctionalInterface.
+        // They may have one and only one abstract method.
+        
+        Comparator<Student> unitsComparatorReversed = 
+            (s1, s2) -> -1 * Integer.compare(s1.getUnits(), s2.getUnits());
+
+        students.sort(unitsComparatorReversed);
+        System.out.println("Sorted by units using unitsComparatorReversed");
+        listStudents(students);
+
 
     } // main
 

@@ -1,4 +1,7 @@
 package edu.ucsb.cs156.student;
+
+import java.util.Comparator;
+
 public class Student implements Comparable<Student> {
     private String first;
     private String last;
@@ -105,4 +108,12 @@ public class Student implements Comparable<Student> {
 
             return new Student(first, last, perm, units);
     }
+
+    public static class FirstNameComparator implements Comparator<Student> {
+        public int compare(Student s1, Student s2) {
+            return s1.first.compareTo(s2.first);
+        }
+
+    }
+
 }
