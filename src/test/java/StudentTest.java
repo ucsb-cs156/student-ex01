@@ -5,7 +5,9 @@ public class StudentTest {
 
     @Test
     public void test_getName1() {
+        // arrange / act
         Student s = new Student();
+        // assert 
         assertEquals("Sample Student", s.getName());
     }
 
