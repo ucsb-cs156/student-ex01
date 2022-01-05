@@ -109,9 +109,14 @@ public class Student implements Comparable<Student> {
             return new Student(first, last, perm, units);
     }
 
+    /**
+     * This is an inner class.
+     */
     public static class FirstNameComparator implements Comparator<Student> {
+
+        @Override
         public int compare(Student s1, Student s2) {
-            return s1.first.compareTo(s2.first);
+            return s1.first.compareToIgnoreCase(s2.first);
         }
 
     }

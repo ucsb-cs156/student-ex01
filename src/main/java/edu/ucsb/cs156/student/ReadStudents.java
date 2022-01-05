@@ -59,6 +59,11 @@ public class ReadStudents {
             }
         };
 
+        // THE FOLLOWING IS EQUIVALENT TO THE CODE IN THE DECLARATION ABOVE
+        // 
+        // Comparator<Student> unitsComparator = 
+        //    ( s1,  s2) -> Integer.compare(s1.getUnits(),s2.getUnits());
+            
         students.sort(unitsComparator);
         System.out.println("Sorted by units using unitsComparator");
         listStudents(students);
@@ -78,6 +83,25 @@ public class ReadStudents {
         System.out.println("Sorted by units using unitsComparatorReversed");
         listStudents(students);
 
+        // Compare first by last name, then first name, then perm.
+        // That is, the order should be like this:
+
+        // Wang, Richert, 876543
+        // Wang, William, 123456
+        // Wang, William, 234567
+        // Wang, Yuan-Fang, 234776
+        // Wang, Yuxiang, 129877
+        
+        Comparator <Student> permComparator = (s1,s2) -> s1.getPerm() - s2.getPerm();
+
+        // Comparator <Student> permComparator = (s1,s2) -> Integer.compare(s1.getPerm(),s2.getPerm());
+
+
+        Comparator<Student> rosterComparator = new StudentLastNameComparator().thenComparing(new Student.FirstNameComparator()).thenComparing(permComparator);
+
+        students.sort(rosterComparator);
+        System.out.println("Sorted by rosterComparator");
+        listStudents(students);
 
     } // main
 

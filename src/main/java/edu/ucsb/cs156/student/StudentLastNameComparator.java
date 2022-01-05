@@ -15,7 +15,7 @@ public class StudentLastNameComparator implements Comparator<Student> {
 
     @Override
     public int compare(Student s1, Student s2) {
-        return s1.getLast().compareTo(s2.getLast());
+        return s1.getLast().compareToIgnoreCase(s2.getLast());
     }
 
 }
