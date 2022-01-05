@@ -5,6 +5,8 @@ public class Main { // implicit: public class Main extends object
         String usageMessage = "Usage: java Main name perm\n"
                 + "  perm should be a positive integer between 1 and 9999999";
 
+        // Similar to argc/argv in C++
+
         if (args.length != 2) {
             System.err.println(usageMessage);
             System.exit(1);

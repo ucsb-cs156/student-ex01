@@ -1,10 +1,10 @@
 public class Student {
-    String name;
-    int perm;
+    private String name;   // java.lang.String or just String
+    private int perm;
 
     public Student() {
-        name = "Sample Student";
-        perm = 9999999;
+        this.name = "Sample Student";
+        this.perm = 9999999;
     }
 
     public Student(String name, int perm) {
@@ -20,8 +20,4 @@ public class Student {
         return this.perm;
     }
 
-    @Override
-    public String toString() {
-        return "[name: " + this.name + ", perm: " + this.perm + "]";
-    }
 }
