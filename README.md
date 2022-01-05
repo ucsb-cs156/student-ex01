@@ -1,8 +1,8 @@
-# student-ex01
+# student-ex03
 
-Code for Student tutorial, ex01
+Code for Student tutorial, ex03
 
-See: <https://ucsb-cs156.github.io/tutorials/student_ex01/>
+See: <https://ucsb-cs156.github.io/tutorials/student_ex03/>
 
 ## To compile and run with Maven
 
