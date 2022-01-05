@@ -24,8 +24,8 @@ public class Main { // implicit: public class Main extends object
         Student s1 = new Student();
         Student s2 = new Student(name, perm);
 
-        System.out.println("s1 = " + s1); // implicit: r1.toString()
-        System.out.println("s2 = " + s2); // implicit: r2.toString()
+        System.out.println("s1 = " + s1); // implicit: s1.toString()
+        System.out.println("s2 = " + s2); // implicit: s2.toString()
 
     } // main
 
