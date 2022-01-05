@@ -21,4 +21,11 @@ public class StudentTest {
         assertEquals(9999999, s.getPerm());
     }
 
+    @Test
+    public void test_toString1() {
+        Student s = new Student();
+        assertEquals("[name: Sample Student, perm: 9999999]", s.toString());
+    }
+
+
 }
