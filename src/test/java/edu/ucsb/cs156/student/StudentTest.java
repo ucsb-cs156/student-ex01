@@ -1,10 +1,11 @@
 package edu.ucsb.cs156.student;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class StudentTest {
 
@@ -33,20 +34,27 @@ public class StudentTest {
         assertEquals(expected, s.toString());
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void test_constructor_zeroPerm() {
-        Student s = new Student("Test",0);
+        assertThrows( IllegalArgumentException.class, () -> {
+                Student s = new Student("Test",0);
+        });
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void test_constructor_negPerm() {
-        Student s = new Student("Test",-1);
+        assertThrows( IllegalArgumentException.class, () -> {
+            Student s = new Student("Test",-1);
+        });
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void test_constructor_tooBigPerm() {
-        Student s = new Student("Test",10000000);
+        assertThrows( IllegalArgumentException.class, () -> {
+            Student s = new Student("Test",10000000);
+        });
     }
+
 
     @Test
     public void test_constructor_perm_1_ok() {
